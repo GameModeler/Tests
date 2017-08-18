@@ -35,7 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\SDKProject\GMDataBase\GMDataBase\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\SDKProject\GMDataBase\GMDataBase\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker.NET4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.1.0.3\lib\net40\Faker.NET4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,8 +62,63 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataBase\DataBaseInit.cs" />
+    <Compile Include="DataBase\DatabaseMappingInit.cs" />
+    <Compile Include="DataBase\Entities\Annotation\Car.cs" />
+    <Compile Include="DataBase\Entities\Annotation\Cat.cs" />
+    <Compile Include="DataBase\Entities\Annotation\Satellite.cs" />
+    <Compile Include="DataBase\Entities\Book.cs" />
+    <Compile Include="DataBase\Entities\Mapping\Student.cs" />
+    <Compile Include="DataBase\Tests\Annotation\DataAnnotationInit.cs" />
+    <Compile Include="DataBase\Tests\Annotation\Persistance.cs" />
+    <Compile Include="DataBase\Tests\ContextTests\DbContextsUnitTest.cs" />
+    <Compile Include="DataBase\Tests\ContextTests\UniversalContextTest.cs" />
+    <Compile Include="DataBase\Tests\DataBaseInitilization.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\LazyLoading.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\Mappings.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\MySQL_SQLite\DeleteTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\MySQL_SQLite\FullTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\MySQL_SQLite\GetTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\MySQL_SQLite\InsertTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\MySQL_SQLite\Update.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\SQLite_MySQL\DeleteTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\SQLite_MySQL\FullTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\SQLite_MySQL\GetTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\SQLite_MySQL\InsertTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\GlobalContext\SQLite_MySQL\UpdateTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\DeleteTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\FullTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\GetTests.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\InsertAndCreateDb.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\InsertOnExistingDb.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\Mappings.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\Performances.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\UpdateTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\DeleteTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\FullTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\GetTest.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\InsertAndCreateDb.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\InstertOnExistingDb.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\Mappings.cs" />
+    <Compile Include="DataBase\Tests\RepositoryTests\SQLite\UpdateTest.cs" />
+    <Compile Include="LoggerTest\LoggerManagerUnitTest.cs" />
+    <Compile Include="LoggerTest\LoggerUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{685a956e-2671-45e0-9145-11a8da90991f}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{f40055b5-5bfa-4553-891f-8e17f72b1da4}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
