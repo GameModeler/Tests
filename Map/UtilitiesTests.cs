@@ -61,10 +61,20 @@ namespace Tests.Map
         }
 
         [TestMethod]
-        [Ignore]
         public void BrowseFilesTest()
         {
-            
+            var diaplogTitle = "Dialog title";
+            var fileTypeLabel = "Images";
+            string[] fileTypes = {"jpg", "png", "gif"};
+
+            var res = Utilities.BrowseFiles(diaplogTitle, fileTypeLabel, fileTypes, true);
+
+            if (res != null)
+            {
+                Assert.AreEqual(diaplogTitle, res.Title);
+                Assert.IsTrue(res.Multiselect);
+                Assert.AreEqual("Images (*.jpg; *.png; *.gif)|*.jpg; *.png; *.gif", res.Filter);
+            }
         }
 
         [TestMethod]
