@@ -69,16 +69,6 @@ namespace Tests.DataBase.Tests.Annotation
                
                 repo1.Insert(dataInit.CatsHouse);
 
-
-                //var response = sqliteContextCats.DbContext.Database.SqlQuery<Cat>("SELECT * FROM sqlite_master WHERE name='Cats' and type='table';").FirstOrDefault();
-                
-                //// Sqlite 
-                //var sqlitetable1 = sqliteContextCats.DbContext.Database.ExecuteSqlCommand("SELECT * FROM sqlite_master WHERE name='Cats' and type='table';");
-                //Assert.AreEqual(-1, sqlitetable1);
-
-                //var sqlitetable2 = sqliteContextCats.DbContext.Database.ExecuteSqlCommand("SELECT * FROM sqlite_master WHERE name='Cars' and type='table';");
-                //Assert.AreEqual(-1, sqlitetable2);
-
                 // MySql
                 var mysqltable1 = mySqlContextCats.DbContext.Database.ExecuteSqlCommand("SELECT 1 FROM cats LIMIT 1;");
                 Assert.AreEqual(-1, mysqltable1);

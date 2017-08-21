@@ -57,17 +57,26 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataBase\DatabaseInheritanceInit.cs" />
     <Compile Include="DataBase\DataBaseInit.cs" />
     <Compile Include="DataBase\DatabaseMappingInit.cs" />
     <Compile Include="DataBase\Entities\Annotation\Car.cs" />
     <Compile Include="DataBase\Entities\Annotation\Cat.cs" />
     <Compile Include="DataBase\Entities\Annotation\Satellite.cs" />
     <Compile Include="DataBase\Entities\Book.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\A.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\B.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\C.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\D.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\E.cs" />
+    <Compile Include="DataBase\Entities\Inheritance\F.cs" />
     <Compile Include="DataBase\Entities\Mapping\Student.cs" />
     <Compile Include="DataBase\Tests\Annotation\DataAnnotationInit.cs" />
     <Compile Include="DataBase\Tests\Annotation\Persistance.cs" />
@@ -92,7 +101,6 @@
     <Compile Include="DataBase\Tests\RepositoryTests\MySQL\InsertAndCreateDb.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\MySQL\InsertOnExistingDb.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\MySQL\Mappings.cs" />
-    <Compile Include="DataBase\Tests\RepositoryTests\MySQL\Performances.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\MySQL\UpdateTest.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\DeleteTest.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\FullTest.cs" />
@@ -102,8 +110,8 @@
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\Mappings.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\UpdateTest.cs" />
     <Compile Include="LoggerTest\LoggerManagerUnitTest.cs" />
-    <Compile Include="LoggerTest\LoggerUnitTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="LoggerTest\LoggerTest.cs" />
+    <Compile Include="LoggerTest\LogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +128,7 @@
       <Name>Logger</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

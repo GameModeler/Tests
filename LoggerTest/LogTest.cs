@@ -1,17 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tests.DataBase.Entities.Mapping;
+using Logger.Loggers;
+using Logger.Interfaces;
+using Logger.Utils;
 
-namespace Tests.DataBase.Tests.RepositoryTests.MySQL
+namespace Tests.LoggerTest
 {
     /// <summary>
-    /// Description résumée pour Performances
+    /// Description résumée pour LogTest
     /// </summary>
     [TestClass]
-    public class Performances
+    public class LogTest
     {
-
-        List<Student> allStudents;
+        private LoggerManager loggerManager;
 
         #region Attributs de tests supplémentaires
         //
@@ -29,23 +32,8 @@ namespace Tests.DataBase.Tests.RepositoryTests.MySQL
         [TestInitialize()]
         public void MyTestInitialize() {
 
-
-            for (int i = 0; i < 100; i++)
-            {
-                StudentAddress stuAdd = new StudentAddress();
-                stuAdd.Address1 = Faker.Address.StreetAddress();
-                stuAdd.City = Faker.Address.City();
-                stuAdd.Zipcode = Faker.RandomNumber.Next(1000, 9000);
-
-                string name = Faker.Name.First();
-
-                Student stu = new Student(name, stuAdd);
-
-                allStudents.Add(stu);
-                  
-            }
-
-
+            // 1. Get a LoggerManager
+            loggerManager = new LoggerManager();
         }
         //
         // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
@@ -54,12 +42,20 @@ namespace Tests.DataBase.Tests.RepositoryTests.MySQL
         //
         #endregion
 
+        /// <summary>
+        /// Test Log contructor
+        /// </summary>
         [TestMethod]
-        public void TestMethod1()
+        public void TestLog()
         {
-            //
-            // TODO: ajoutez ici la logique du test
-            //
+            // Test Consol logger appender
+            ILogger logger = loggerManager.CreateLogger();
+
+            Log log = new Log(logger, "Log1", Level.INFO, new Exception());
+
+            Assert.IsNotNull(log);
+            Assert.AreEqual("GM_LOGGER", log.LoggerName);          
+
         }
     }
 }

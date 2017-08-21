@@ -15,8 +15,8 @@ namespace Tests.DataBase.Tests.ContextTests
     {
         private DbManager dbManager = DbManager.Instance;
 
-        private IUniversalContext context1;
-        private IUniversalContext context2;
+        private static IUniversalContext context1;
+        private static IUniversalContext context2;
 
         private IGlobalContext globalContext;
         private MySqlDatabase dbTest1;
@@ -28,7 +28,7 @@ namespace Tests.DataBase.Tests.ContextTests
                 .MySqlDb
                 .Set
                 .DatabaseName("test_db")
-                .Server("test_server")
+                .Server("localhost")
                 .UserId("root")
                 .ToMySqlDatabase;
 
@@ -36,7 +36,7 @@ namespace Tests.DataBase.Tests.ContextTests
                  .MySqlDb
                  .Set
                  .DatabaseName("test_db2")
-                 .Server("test_server")
+                 .Server("localhost")
                  .UserId("root")
                  .ToMySqlDatabase;
 
@@ -44,6 +44,13 @@ namespace Tests.DataBase.Tests.ContextTests
             context2 = dbManager.CreateContext(dbTest2);
 
             globalContext = dbManager.CreateGlobalContext();
+        }
+
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+            context1.DbContext.Database.Delete();
+            context1.DbContext.Database.Delete();     
         }
 
         [TestMethod]

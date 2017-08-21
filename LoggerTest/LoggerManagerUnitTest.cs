@@ -44,7 +44,7 @@ namespace Tests.LoggerTest
 
             Assert.IsInstanceOfType(logger, typeof(ILogger));
             Assert.AreEqual(logger.Name, "GM_LOGGER");
-            Assert.AreEqual(logger.Level, Level.DEBUG);
+            Assert.AreEqual(logger.Level, Level.INFO);
         }
 
         /// <summary>

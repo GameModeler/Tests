@@ -25,7 +25,6 @@ namespace Tests.DataBase.Tests.RepositoryTests.MySQL
 
         #region Attributs de tests supplémentaires
 
-
         // Utilisez ClassCleanup pour exécuter du code une fois que tous les tests d'une classe ont été exécutés
         [ClassCleanup()]
         public static void MyClassCleanup() {
