@@ -35,7 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,9 +54,23 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Map\Graphics\GridLayerTests.cs" />
+    <Compile Include="Map\Commands\RelayCommandTests.cs" />
+    <Compile Include="Map\Converters\MathConverterTests.cs" />
+    <Compile Include="Map\Code\ClassA.cs" />
+    <Compile Include="Map\Code\ClassB.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Map\UtilitiesTests.cs" />
+    <Compile Include="Map\ViewModels\BaseViewModelTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Map\Map.csproj">
+      <Project>{0557bd8e-4ac8-4658-80f7-6470e13bef6e}</Project>
+      <Name>Map</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
