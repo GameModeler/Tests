@@ -50,8 +50,8 @@ namespace Tests.DataBase
             stu_ad3.City = "Gaspe";
             stu_ad3.Zipcode = 12345;
 
-            Standard st1 = new Standard("standard_1");
-            Standard st2 = new Standard("standard_2");
+            Entities.Mapping.Standard st1 = new Entities.Mapping.Standard("standard_1");
+            Entities.Mapping.Standard st2 = new Entities.Mapping.Standard("standard_2");
 
             Course francais = new Course("Français");
             Course maths = new Course("Maths");
