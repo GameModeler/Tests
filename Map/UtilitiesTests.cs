@@ -63,15 +63,15 @@ namespace Tests.Map
         [TestMethod]
         public void BrowseFilesTest()
         {
-            var diaplogTitle = "Dialog title";
+            var dialogTitle = "Dialog title";
             var fileTypeLabel = "Images";
             string[] fileTypes = {"jpg", "png", "gif"};
 
-            var res = Utilities.BrowseFiles(diaplogTitle, fileTypeLabel, fileTypes, true);
+            var res = Utilities.BrowseFiles(dialogTitle, fileTypeLabel, fileTypes, true);
 
             if (res != null)
             {
-                Assert.AreEqual(diaplogTitle, res.Title);
+                Assert.AreEqual(dialogTitle, res.Title);
                 Assert.IsTrue(res.Multiselect);
                 Assert.AreEqual("Images (*.jpg; *.png; *.gif)|*.jpg; *.png; *.gif", res.Filter);
             }
