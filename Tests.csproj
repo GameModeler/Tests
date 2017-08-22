@@ -51,6 +51,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -114,9 +115,18 @@
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\InstertOnExistingDb.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\Mappings.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\UpdateTest.cs" />
+    <Compile Include="LoggerTest\AppenderMaagerTest.cs" />
+    <Compile Include="LoggerTest\Appenders\ConsoleAppenderTest.cs" />
+    <Compile Include="LoggerTest\Appenders\DatabaseAppenderTest.cs" />
+    <Compile Include="LoggerTest\Appenders\FileAppenderTest.cs" />
+    <Compile Include="LoggerTest\Appenders\MessageBoxAppenderTest.cs" />
+    <Compile Include="LoggerTest\Appenders\ToastAppenderTest.cs" />
     <Compile Include="LoggerTest\LoggerManagerUnitTest.cs" />
     <Compile Include="LoggerTest\LoggerTest.cs" />
     <Compile Include="LoggerTest\LogTest.cs" />
+    <Compile Include="LoggerTest\ModalBoxTest.cs" />
+    <Compile Include="LoggerTest\ToastLayoutTest.cs" />
+    <Compile Include="LoggerTest\Utils\LoggerUtilsTest.cs" />
     <Compile Include="Map\Graphics\GridLayerTests.cs" />
     <Compile Include="Map\Commands\RelayCommandTests.cs" />
     <Compile Include="Map\Converters\MathConverterTests.cs" />

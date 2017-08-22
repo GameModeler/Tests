@@ -1,19 +1,23 @@
 ﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger.Loggers;
-using Logger.Interfaces;
-using Logger.Utils;
+using Logger.Appenders;
 
-namespace Tests.LoggerTest
+namespace Tests.LoggerTest.Appenders
 {
-
     /// <summary>
-    /// Description résumée pour LogTest
+    /// Description résumée pour MessageBoxAppenderTest
     /// </summary>
     [TestClass]
-    public class LogTest
+    public class MessageBoxAppenderTest
     {
-        private LoggerManager loggerManager;
+        public MessageBoxAppenderTest()
+        {
+            //
+            // TODO: ajoutez ici la logique du constructeur
+            //
+        }
 
         private TestContext testContextInstance;
 
@@ -46,12 +50,8 @@ namespace Tests.LoggerTest
         // public static void MyClassCleanup() { }
         //
         // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
-        [TestInitialize()]
-        public void MyTestInitialize() {
-
-            // 1. Get a LoggerManager
-            loggerManager = new LoggerManager();
-        }
+        // [TestInitialize()]
+        // public void MyTestInitialize() { }
         //
         // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
         // [TestCleanup()]
@@ -59,20 +59,22 @@ namespace Tests.LoggerTest
         //
         #endregion
 
-        /// <summary>
-        /// Test Log contructor
-        /// </summary>
         [TestMethod]
-        public void TestLog()
+        public void TestMessageBoxAppender()
         {
-            // Test Consol logger appender
-            ILogger logger = loggerManager.CreateLogger();
+            MessageBoxAppender boxAppender = new MessageBoxAppender("box_appender");
 
-            Log log = new Log(logger, "Log1", Level.INFO, new Exception());
+            Assert.IsNotNull(boxAppender);
+            Assert.AreEqual("box_appender", boxAppender.AppenderName);
 
-            Assert.IsNotNull(log);
-            Assert.AreEqual("GM_LOGGER", log.LoggerName);          
+            Assert.IsNotNull(boxAppender.Box);
 
+            MessageBoxAppender boxAppender2 = new MessageBoxAppender(null);
+
+            Assert.IsNotNull(boxAppender2);
+            Assert.AreEqual("GM_MESSAGE_BOX_APPENDER", boxAppender2.AppenderName);
+
+            Assert.IsNotNull(boxAppender.Box);
         }
     }
 }

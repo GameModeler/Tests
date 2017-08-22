@@ -1,19 +1,23 @@
 ﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger.Loggers;
-using Logger.Interfaces;
-using Logger.Utils;
+using Logger.Layout;
 
 namespace Tests.LoggerTest
 {
-
     /// <summary>
-    /// Description résumée pour LogTest
+    /// Description résumée pour ToastLayoutTest
     /// </summary>
     [TestClass]
-    public class LogTest
+    public class ToastLayoutTest
     {
-        private LoggerManager loggerManager;
+        public ToastLayoutTest()
+        {
+            //
+            // TODO: ajoutez ici la logique du constructeur
+            //
+        }
 
         private TestContext testContextInstance;
 
@@ -46,12 +50,8 @@ namespace Tests.LoggerTest
         // public static void MyClassCleanup() { }
         //
         // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
-        [TestInitialize()]
-        public void MyTestInitialize() {
-
-            // 1. Get a LoggerManager
-            loggerManager = new LoggerManager();
-        }
+        // [TestInitialize()]
+        // public void MyTestInitialize() { }
         //
         // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
         // [TestCleanup()]
@@ -59,20 +59,35 @@ namespace Tests.LoggerTest
         //
         #endregion
 
-        /// <summary>
-        /// Test Log contructor
-        /// </summary>
         [TestMethod]
-        public void TestLog()
+        public void TestToastLayout()
         {
-            // Test Consol logger appender
-            ILogger logger = loggerManager.CreateLogger();
+            ToastLayout toastLayout = new ToastLayout("line1", "line2", "line3");
 
-            Log log = new Log(logger, "Log1", Level.INFO, new Exception());
+            Assert.IsNotNull(toastLayout);
 
-            Assert.IsNotNull(log);
-            Assert.AreEqual("GM_LOGGER", log.LoggerName);          
+            Assert.AreEqual(3, toastLayout.Elements.Count);
+        }
 
+        [TestMethod]
+        public void TestToastLayout2()
+        {
+            ToastLayout toastLayout = new ToastLayout("line1", "line2");
+
+            Assert.IsNotNull(toastLayout);
+
+            Assert.AreEqual(2, toastLayout.Elements.Count);
+        }
+
+        [TestMethod]
+        public void TestToastLayout3()
+        {
+            ToastLayout toastLayout = new ToastLayout("caption");
+
+            Assert.IsNotNull(toastLayout);
+
+            Assert.AreEqual(1, toastLayout.Elements.Count);
+            Assert.AreEqual("caption", toastLayout.Elements[0]);
         }
     }
 }

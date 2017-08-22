@@ -23,8 +23,26 @@ namespace Tests.DataBase.Tests.RepositoryTests.GlobalContext.SQLite_MySQL
 
         private static List<Book> bookShelve;
 
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         #region Attributs de tests supplémentaires
-  
+
         [ClassCleanup()]
         public static void MyClassCleanup() {
             mySqlContext.DbContext.Database.Delete();

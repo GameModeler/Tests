@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger.Loggers;
-using Logger.Interfaces;
+using Logger.Appenders;
 using Logger.Utils;
 
-namespace Tests.LoggerTest
+namespace Tests.LoggerTest.Appenders
 {
-
     /// <summary>
-    /// Description résumée pour LogTest
+    /// Description résumée pour ConsoleAppender
     /// </summary>
     [TestClass]
-    public class LogTest
+    public class ConsoleAppenderTest
     {
-        private LoggerManager loggerManager;
+        public ConsoleAppenderTest()
+        {
+            //
+            // TODO: ajoutez ici la logique du constructeur
+            //
+        }
 
         private TestContext testContextInstance;
 
@@ -46,12 +51,8 @@ namespace Tests.LoggerTest
         // public static void MyClassCleanup() { }
         //
         // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
-        [TestInitialize()]
-        public void MyTestInitialize() {
-
-            // 1. Get a LoggerManager
-            loggerManager = new LoggerManager();
-        }
+        // [TestInitialize()]
+        // public void MyTestInitialize() { }
         //
         // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
         // [TestCleanup()]
@@ -59,20 +60,20 @@ namespace Tests.LoggerTest
         //
         #endregion
 
-        /// <summary>
-        /// Test Log contructor
-        /// </summary>
         [TestMethod]
-        public void TestLog()
+        public void TestConsoleAppender()
         {
-            // Test Consol logger appender
-            ILogger logger = loggerManager.CreateLogger();
+            ConsoleAppender consoleAppender = new ConsoleAppender("console_appender");
 
-            Log log = new Log(logger, "Log1", Level.INFO, new Exception());
+            Assert.IsNotNull(consoleAppender);
+            Assert.AreEqual("console_appender", consoleAppender.AppenderName);
+            Assert.AreEqual(LogPatternConstants.DEFAULT_PATTERN, consoleAppender.Layout);
 
-            Assert.IsNotNull(log);
-            Assert.AreEqual("GM_LOGGER", log.LoggerName);          
+            ConsoleAppender consoleAppender2 = new ConsoleAppender("");
 
+            Assert.IsNotNull(consoleAppender2);
+            Assert.AreEqual("GM_CONSOLE_APPENDER", consoleAppender2.AppenderName);
+            Assert.AreEqual(LogPatternConstants.DEFAULT_PATTERN, consoleAppender2.Layout);
         }
     }
 }
