@@ -1,19 +1,25 @@
 ﻿using System;
+using System.Text;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger.Loggers;
-using Logger.Interfaces;
-using Logger.Utils;
+using Logger.Appenders;
+using DataBase.Database.DbSettings;
+using DataBase.Database.DbSettings.DbClasses;
 
-namespace Tests.LoggerTest
+namespace Tests.LoggerTest.Appenders
 {
-
     /// <summary>
-    /// Description résumée pour LogTest
+    /// Description résumée pour DatabaseAppenderTest
     /// </summary>
     [TestClass]
-    public class LogTest
+    public class DatabaseAppenderTest
     {
-        private LoggerManager loggerManager;
+        public DatabaseAppenderTest()
+        {
+            //
+            // TODO: ajoutez ici la logique du constructeur
+            //
+        }
 
         private TestContext testContextInstance;
 
@@ -46,12 +52,8 @@ namespace Tests.LoggerTest
         // public static void MyClassCleanup() { }
         //
         // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
-        [TestInitialize()]
-        public void MyTestInitialize() {
-
-            // 1. Get a LoggerManager
-            loggerManager = new LoggerManager();
-        }
+        // [TestInitialize()]
+        // public void MyTestInitialize() { }
         //
         // Utilisez TestCleanup pour exécuter du code après que chaque test a été exécuté
         // [TestCleanup()]
@@ -59,20 +61,18 @@ namespace Tests.LoggerTest
         //
         #endregion
 
-        /// <summary>
-        /// Test Log contructor
-        /// </summary>
         [TestMethod]
-        public void TestLog()
+        public void TestDataBaseAppender()
         {
-            // Test Consol logger appender
-            ILogger logger = loggerManager.CreateLogger();
+            DataBaseAppender dbAppender = new DataBaseAppender("db_appender");
 
-            Log log = new Log(logger, "Log1", Level.INFO, new Exception());
+            Assert.IsNotNull(dbAppender);
+            Assert.AreEqual("db_appender", dbAppender.AppenderName);
 
-            Assert.IsNotNull(log);
-            Assert.AreEqual("GM_LOGGER", log.LoggerName);          
+            DataBaseAppender dbAppender2 = new DataBaseAppender(null);
 
+            Assert.IsNotNull(dbAppender2);
+            Assert.AreEqual("GM_DB_LOGGER", dbAppender2.AppenderName);
         }
     }
 }

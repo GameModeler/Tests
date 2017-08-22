@@ -24,6 +24,24 @@ namespace Tests.DataBase.Tests.RepositoryTests.MySQL
 
         private static DataBaseInitilization databaseInit = DataBaseInitilization.Instance;
 
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         public InsertAndCreateDb() { }
 
         /// <summary>

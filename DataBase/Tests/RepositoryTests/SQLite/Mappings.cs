@@ -18,8 +18,26 @@ namespace Tests.DataBase.Tests.RepositoryTests.SQLite
         private static DatabaseMappingInit dataInit = new DatabaseMappingInit();
         private static SqLiteDatabase sqliteDb;
 
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         #region Attributs de tests supplémentaires
-       
+
         // Vous pouvez utiliser les attributs supplémentaires suivants lorsque vous écrivez vos tests :
         //
         // Utilisez ClassInitialize pour exécuter du code avant d'exécuter le premier test de la classe

@@ -21,6 +21,24 @@ namespace Tests.DataBase.Tests.ContextTests
         private IGlobalContext globalContext;
         private MySqlDatabase dbTest1;
         private MySqlDatabase dbTest2;
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
 
         public DbContextsUnitTest()
         {

@@ -23,8 +23,26 @@ namespace Tests.DataBase.Tests.RepositoryTests.GlobalContext.MySQL_SQLite
 
         private static List<Book> bookShelve;
 
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         #region Attributs de tests supplémentaires
-        
+
         // Utilisez ClassCleanup pour exécuter du code une fois que tous les tests d'une classe ont été exécutés
         [ClassCleanup()]
         public static void MyClassCleanup() {

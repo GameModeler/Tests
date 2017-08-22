@@ -18,8 +18,27 @@ namespace Tests.LoggerTest
         private const String LOGGER_NAME = "TEST_LOGGER";
         private ILogger loggerTest;
 
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Obtient ou définit le contexte de test qui fournit
+        ///des informations sur la série de tests active, ainsi que ses fonctionnalités.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
+
         #region Attributs de tests supplémentaires
-   
+
         // Utilisez TestInitialize pour exécuter du code avant d'exécuter chaque test 
         [TestInitialize()]
         public void MyTestInitialize() {

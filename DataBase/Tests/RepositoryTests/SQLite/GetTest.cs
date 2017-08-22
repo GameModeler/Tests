@@ -26,11 +26,8 @@ namespace Tests.DataBase.Tests.RepositoryTests.SQLite
 
         private static List<Book> bookShelve;
 
-        public GetTest()
-        {
-        }
-
         private TestContext testContextInstance;
+
 
         /// <summary>
         ///Obtient ou définit le contexte de test qui fournit
