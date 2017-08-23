@@ -1,11 +1,11 @@
-﻿using Map.Graphics;
+﻿using System.Windows;
+using Map.Graphics;
 using Map.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Map.ViewModels
 {
     [TestClass]
-    [Ignore]
     public class BaseViewModelTests
     {
         public BaseViewModel BaseViewModel { get; set; }
@@ -27,6 +27,7 @@ namespace Tests.Map.ViewModels
         }
 
         [TestMethod]
+        [Ignore]
         public void InitializeTest()
         {
             
@@ -35,10 +36,21 @@ namespace Tests.Map.ViewModels
         [TestMethod]
         public void ValidatePositionsTest()
         {
-            
+            BaseViewModel.ValidPositions.AddRange(new []
+            {
+                new Point(4, 4), 
+                new Point(2, 3)
+            });
+
+            BaseViewModel.ValidatePositions();
+
+            Assert.IsFalse(BaseViewModel.GridLayer.Placeholders[0].IsActive);
+            Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[9].IsActive);
+            Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[15].IsActive);
         }
 
         [TestMethod]
+        [Ignore]
         public void IsLegalMoveTest()
         {
 
