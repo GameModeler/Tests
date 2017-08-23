@@ -70,6 +70,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataBase\Csv\CsvManagerTests.cs" />
+    <Compile Include="DataBase\Binary\BinaryManagerTests.cs" />
+    <Compile Include="DataBase\Character\CharacterManagerTests.cs" />
     <Compile Include="DataBase\DatabaseInheritanceInit.cs" />
     <Compile Include="DataBase\DataBaseInit.cs" />
     <Compile Include="DataBase\DatabaseMappingInit.cs" />
@@ -115,6 +118,7 @@
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\InstertOnExistingDb.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\Mappings.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\UpdateTest.cs" />
+    <Compile Include="DataBase\Json\JsonManagerTests.cs" />
     <Compile Include="LoggerTest\AppenderMaagerTest.cs" />
     <Compile Include="LoggerTest\Appenders\ConsoleAppenderTest.cs" />
     <Compile Include="LoggerTest\Appenders\DatabaseAppenderTest.cs" />
@@ -135,6 +139,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Map\UtilitiesTests.cs" />
     <Compile Include="Map\ViewModels\BaseViewModelTests.cs" />
+    <Compile Include="DataBase\Xml\XmlManagerTests.cs" />
+    <Compile Include="DataBase\Yaml\YamlManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
