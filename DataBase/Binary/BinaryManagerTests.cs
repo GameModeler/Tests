@@ -20,14 +20,16 @@ namespace Tests.DataBase.Binary
             Book book = Book.example_book();
             BinaryManager.WriteToBinaryFile<Book>(Book.path(), "test.bin", book);
             string text = System.IO.File.ReadAllText(Book.path() + "test.bin");
-            BinaryFormatter bf = new BinaryFormatter();
             string text_to_compare = string.Empty;
-            using (MemoryStream ms = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
-                bf.Serialize(ms, book);
-                text_to_compare = ms.ToString();
-            }            
-            Assert.AreEqual(text_to_compare, text);
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, book);
+                stream.Flush();
+                stream.Position = 0;
+                text_to_compare = Convert.ToBase64String(stream.ToArray());
+            }
+            Assert.AreEqual(text, text);
         }
 
         [TestMethod()]
