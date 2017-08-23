@@ -21,7 +21,7 @@ namespace Tests.DataBase.Binary
             BinaryManager.WriteToBinaryFile<Book>(Book.path(), "test.bin", book);
             string text = System.IO.File.ReadAllText(Book.path() + "test.bin");
             BinaryFormatter bf = new BinaryFormatter();
-            string text_to_compare = "";
+            string text_to_compare = string.Empty;
             using (MemoryStream ms = new MemoryStream())
             {
                 bf.Serialize(ms, book);
