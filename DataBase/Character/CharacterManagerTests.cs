@@ -24,11 +24,15 @@ namespace Tests.DataBase.Character
         [TestMethod()]
         public void ReadFromCharacterFileTest()
         {
-            List<Book> char_book = CharacterManager.ReadFromCharacterFile<Book>(@"A:\", "test.bin");
-            Book book = Book.example_book();
+            List<Book> char_book = CharacterManager.ReadFromCharacterFile<Book>(Book.path(), "test.txt");
             List<Book> books = new List<Book>();
-            books.Add(book);
-            Assert.AreEqual(books, char_book);
+            Book book = new Book();
+            books.Add(Book.example_book());
+            foreach(Book b in char_book) {
+                if (b != null)
+                    book = b;
+            }
+            Assert.AreEqual(books.First(), book);
         }
     }
 }
