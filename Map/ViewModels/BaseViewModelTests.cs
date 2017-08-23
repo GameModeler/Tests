@@ -24,36 +24,30 @@ namespace Tests.Map.ViewModels
             };
 
             BaseViewModel.Initialize();
-        }
 
-        [TestMethod]
-        [Ignore]
-        public void InitializeTest()
-        {
-            
+            BaseViewModel.ValidPositions.AddRange(new[]
+            {
+                new Point(4, 4),
+                new Point(2, 3)
+            });
+
+            BaseViewModel.ValidatePositions();
         }
 
         [TestMethod]
         public void ValidatePositionsTest()
         {
-            BaseViewModel.ValidPositions.AddRange(new []
-            {
-                new Point(4, 4), 
-                new Point(2, 3)
-            });
-
-            BaseViewModel.ValidatePositions();
-
             Assert.IsFalse(BaseViewModel.GridLayer.Placeholders[0].IsActive);
             Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[9].IsActive);
             Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[15].IsActive);
         }
 
         [TestMethod]
-        [Ignore]
         public void IsLegalMoveTest()
         {
-
+            Assert.IsFalse(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[0].Position));
+            Assert.IsTrue(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[9].Position));
+            Assert.IsTrue(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[15].Position));
         }
     }
 }

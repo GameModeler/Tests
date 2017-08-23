@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
+using Map.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Map.Commands
@@ -8,27 +10,19 @@ namespace Tests.Map.Commands
     {
         public ICommand TestCommand;
 
-        public void Initialize()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RelayCommandExceptionTest()
         {
-            
+            Assert.IsNull(TestCommand);
+            TestCommand = new RelayCommand(null, null);
         }
 
-        [TestMethod]
         public void RelayCommandTest()
         {
             
         }
 
-        [TestMethod]
-        public void CanExecuteTest()
-        {
-
-        }
-
-        [TestMethod]
-        public void ExecuteTest()
-        {
-
-        }
+        public void 
     }
 }

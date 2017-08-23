@@ -133,7 +133,6 @@
     <Compile Include="LoggerTest\ModalBoxTest.cs" />
     <Compile Include="LoggerTest\ToastLayoutTest.cs" />
     <Compile Include="LoggerTest\Utils\LoggerUtilsTest.cs" />
-    <Compile Include="Map\Graphics\GridLayerTests.cs" />
     <Compile Include="Map\Commands\RelayCommandTests.cs" />
     <Compile Include="Map\Code\ClassA.cs" />
     <Compile Include="Map\Code\ClassB.cs" />
