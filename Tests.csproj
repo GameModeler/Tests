@@ -125,6 +125,7 @@
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\Mappings.cs" />
     <Compile Include="DataBase\Tests\RepositoryTests\SQLite\UpdateTest.cs" />
     <Compile Include="DataBase\Json\JsonManagerTests.cs" />
+    <Compile Include="DataBase\Dynamic\DynamicManagerTests.cs" />
     <Compile Include="LoggerTest\AppenderMaagerTest.cs" />
     <Compile Include="LoggerTest\Appenders\ConsoleAppenderTest.cs" />
     <Compile Include="LoggerTest\Appenders\DatabaseAppenderTest.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Map\ViewModels\BaseViewModelTests.cs" />
     <Compile Include="DataBase\Xml\XmlManagerTests.cs" />
     <Compile Include="DataBase\Yaml\YamlManagerTests.cs" />
+    <Compile Include="DataBase\Sql\SqlManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
