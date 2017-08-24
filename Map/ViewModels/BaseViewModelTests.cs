@@ -1,19 +1,20 @@
 ﻿using System.Windows;
 using Map.Graphics;
-using Map.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Tests.Map.Code.UserControls;
+using Tests.Map.Code.ViewModels;
 
 namespace Tests.Map.ViewModels
 {
     [TestClass]
     public class BaseViewModelTests
     {
-        public BaseViewModel BaseViewModel { get; set; }
+        public PieceViewModel PieceViewModel { get; set; }
 
         [TestInitialize]
         public void Initialize()
         {
-            BaseViewModel = new BaseViewModel
+            PieceViewModel = new PieceViewModel()
             {
                 GridLayer = new GridLayer
                 {
@@ -23,31 +24,42 @@ namespace Tests.Map.ViewModels
                 }
             };
 
-            BaseViewModel.Initialize();
+            var pieceUserControl = new PieceUserControl(PieceViewModel);
+            PieceViewModel.GridLayer.Children.Add(pieceUserControl);
 
-            BaseViewModel.ValidPositions.AddRange(new[]
+            PieceViewModel.Initialize();
+
+            PieceViewModel.ValidPositions.AddRange(new[]
             {
                 new Point(4, 4),
                 new Point(2, 3)
             });
 
-            BaseViewModel.ValidatePositions();
+            PieceViewModel.ValidatePositions();
         }
 
         [TestMethod]
         public void ValidatePositionsTest()
         {
-            Assert.IsFalse(BaseViewModel.GridLayer.Placeholders[0].IsActive);
-            Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[9].IsActive);
-            Assert.IsTrue(BaseViewModel.GridLayer.Placeholders[15].IsActive);
+            Assert.IsFalse(PieceViewModel.GridLayer.Placeholders[0].IsActive);
+            Assert.IsTrue(PieceViewModel.GridLayer.Placeholders[9].IsActive);
+            Assert.IsTrue(PieceViewModel.GridLayer.Placeholders[15].IsActive);
         }
 
         [TestMethod]
         public void IsLegalMoveTest()
         {
-            Assert.IsFalse(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[0].Position));
-            Assert.IsTrue(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[9].Position));
-            Assert.IsTrue(BaseViewModel.IsLegalMove(BaseViewModel.GridLayer.Placeholders[15].Position));
+            Assert.IsFalse(PieceViewModel.IsLegalMove(PieceViewModel.GridLayer.Placeholders[0].Position));
+            Assert.IsTrue(PieceViewModel.IsLegalMove(PieceViewModel.GridLayer.Placeholders[9].Position));
+            Assert.IsTrue(PieceViewModel.IsLegalMove(PieceViewModel.GridLayer.Placeholders[15].Position));
+        }
+
+        [TestMethod]
+        public void GetLayerDataTest()
+        {
+            PieceViewModel.Piece.Position = new Point(3, 4);
+
+            Assert.IsNull(PieceViewModel.GetLayerData(new Point(4, 4)));
         }
     }
 }

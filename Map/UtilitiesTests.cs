@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using Map;
 using Map.Graphics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Tests.Map.Code;
+using Tests.Map.Code.Models;
 
 namespace Tests.Map
 {

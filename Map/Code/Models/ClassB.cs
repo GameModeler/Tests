@@ -1,19 +1,12 @@
-﻿using System;
-
-namespace Tests.Map.Code
+﻿namespace Tests.Map.Code.Models
 {
-    [Serializable]
-    public class ClassA
+    public class ClassB
     {
         public int Id { get; }
 
         public string Label { get; }
 
-        public ClassA()
-        {
-        }
-
-        public ClassA(int id, string label)
+        public ClassB(int id, string label)
         {
             Id = id;
             Label = label;
@@ -21,7 +14,7 @@ namespace Tests.Map.Code
 
         public override bool Equals(object obj)
         {
-            var other = obj as ClassA;
+            var other = obj as ClassB;
 
             if (other == null)
             {
@@ -31,7 +24,7 @@ namespace Tests.Map.Code
             return Equals(other);
         }
 
-        protected bool Equals(ClassA other)
+        protected bool Equals(ClassB other)
         {
             return Id == other.Id && string.Equals(Label, other.Label);
         }

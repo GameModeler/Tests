@@ -53,12 +53,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
@@ -138,9 +141,12 @@
     <Compile Include="LoggerTest\ModalBoxTest.cs" />
     <Compile Include="LoggerTest\ToastLayoutTest.cs" />
     <Compile Include="LoggerTest\Utils\LoggerUtilsTest.cs" />
+    <Compile Include="Map\Code\Models\Piece.cs" />
+    <Compile Include="Map\Code\UserControls\PieceUserControl.cs" />
+    <Compile Include="Map\Code\ViewModels\PieceViewModel.cs" />
     <Compile Include="Map\Commands\RelayCommandTests.cs" />
-    <Compile Include="Map\Code\ClassA.cs" />
-    <Compile Include="Map\Code\ClassB.cs" />
+    <Compile Include="Map\Code\Models\ClassA.cs" />
+    <Compile Include="Map\Code\Models\ClassB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Map\UtilitiesTests.cs" />
     <Compile Include="Map\ViewModels\BaseViewModelTests.cs" />

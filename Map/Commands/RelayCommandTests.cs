@@ -22,7 +22,5 @@ namespace Tests.Map.Commands
         {
             
         }
-
-        public void 
     }
 }
